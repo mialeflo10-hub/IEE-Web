@@ -54,7 +54,7 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-8 lg:px-12 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
-          <Image src="/Logo/IEE.png" alt="Logo IEE" width={52} height={52} />
+          <Image src="/Logo/IEEColor.png" alt="Logo IEE" width={52} height={52} />
           <span className="font-display font-bold text-lg text-paper">Ingenería Eléctrica Electrónica</span>
         </Link>
 
@@ -62,7 +62,7 @@ export default function Header() {
           <Image src="/Logo/UNAM.png" alt="UNAM" width={62} height={62} className="opacity-90" />
           <Image src="/Logo/FI.png" alt="Facultad de Ingeniería" width={52} height={52} className="opacity-90" />
           <Image src="/Logo/DIE.png" alt="DIE" width={88} height={88} className="opacity-90" />
-          <Image src="/Logo/IEE.png" alt="IEE" width={52} height={52} className="opacity-90" />
+          <Image src="/Logo/IEEColor.png" alt="IEE" width={52} height={52} className="opacity-90" />
         </div>
       </div>
 

@@ -1,3 +1,4 @@
+
 const areas = [
   { code: "A01", name: "Circuitos y electrónica", desc: "Análisis y diseño de circuitos analógicos y digitales." },
   { code: "A02", name: "Sistemas de control", desc: "Modelado y automatización de procesos." },
