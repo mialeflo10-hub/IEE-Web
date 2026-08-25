@@ -14,6 +14,125 @@ const categories = {
 
 type CategoryKey = keyof typeof categories;
 
+// Campos de profundización: se eligen en 7° semestre y sus materias
+// (obligatorias y optativas) se cursan en 9° y 10° semestre.
+// Datos transcritos de los posters oficiales de la División de
+// Ingeniería Eléctrica, Facultad de Ingeniería, UNAM.
+const profundizacionFields = {
+  energeticos: {
+    label: "Sistemas Energéticos",
+    bg: "bg-emerald-50",
+    border: "border-emerald-500",
+    accent: "text-emerald-700",
+    obligatorias: ["Introducción a los Sistemas Energéticos"],
+    optativas: [
+      "Energías Renovables",
+      "Fundamentos de Ingeniería Nuclear",
+      "Herramientas Computacionales para la Optimación de Sistemas Energéticos",
+      "Ingeniería de Reactores Nucleares",
+      "Introducción a la Conversión de Energía",
+      "Introducción a la Física de Reactores Nucleares",
+      "Introducción al Ahorro y a la Gestión Energética",
+      "Introducción al Análisis Probabilístico de Seguridad",
+      "Planeación de Sistemas de Generación Eléctrica (L)",
+      "Planeación e Instalación de Sistemas de Bioenergía (L)",
+      "Proyecto de Investigación de Ingeniería Eléctrica Electrónica",
+      "Seguridad de Reactores Nucleares",
+      "Temas Selectos de Sistemas Energéticos",
+      "Uso Eficiente en Equipos de Servicio",
+    ],
+  },
+  biomedica: {
+    label: "Biomédica",
+    bg: "bg-orange-50",
+    border: "border-orange-500",
+    accent: "text-orange-700",
+    obligatorias: [
+      "Fisiología de los Sistemas Homeostáticos",
+      "Fisiología del Sistema Endócrino y Nervioso",
+      "Fundamentos de Instrumentación Biomédica",
+      "Ingeniería Clínica",
+    ],
+    optativas: [
+      "Aplicaciones de Optoelectrónica en Medicina",
+      "Audiometría",
+      "Introducción a la Biofísica",
+      "Procesamiento Digital de Imágenes Médicas: Imagenología",
+      "Proyecto de Investigación de Ingeniería Eléctrica Electrónica",
+      "Seguridad e Instalaciones Hospitalarias",
+      "Sistemas y Equipos Biomédicos Electrónicos",
+      "Telesalud",
+      "Temas Selectos de Ingeniería Biomédica",
+      "Transductores Biomédicos",
+    ],
+  },
+  controlYRobotica: {
+    label: "Control y Robótica",
+    bg: "bg-teal-50",
+    border: "border-teal-500",
+    accent: "text-teal-700",
+    obligatorias: [
+      "Control Avanzado (L+)",
+      "Controladores Industriales Programables (L+)",
+      "Robótica Industrial (L+)",
+    ],
+    optativas: [
+      "Control Automático Industrial (L+)",
+      "Control de Sistemas No Lineales (L+)",
+      "Control Distribuido e Integración SCADA (L+)",
+      "Instrumentación Virtual (L+)",
+      "Proyecto de Investigación de Ingeniería Eléctrica Electrónica",
+      "Sistemas Embebidos en Instrumentación y Control (L+)",
+      "Temas Selectos de Control y Robótica",
+    ],
+  },
+  electricaDePotencia: {
+    label: "Eléctrica de Potencia",
+    bg: "bg-red-50",
+    border: "border-red-500",
+    accent: "text-red-700",
+    obligatorias: [
+      "Máquinas Eléctricas II",
+      "Máquinas Eléctricas III",
+      "Protección de Sistemas Eléctricos",
+      "Sistemas de Distribución",
+      "Sistemas Eléctricos de Potencia II",
+    ],
+    optativas: [
+      "Automatización de Sistemas Eléctricos",
+      "Iluminación",
+      "Proyecto de Investigación de Ingeniería Eléctrica Electrónica",
+      "Sistema de Transporte Eléctrico",
+      "Temas Selectos de Ingeniería Eléctrica",
+    ],
+  },
+  electronica: {
+    label: "Electrónica",
+    bg: "bg-sky-50",
+    border: "border-sky-500",
+    accent: "text-sky-700",
+    obligatorias: [
+      "Circuitos para Comunicaciones",
+      "Dispositivos Electrónicos Programables",
+      "Introducción a la Tecnología MEMS",
+      "Sistemas Embebidos",
+    ],
+    optativas: [
+      "Amplificadores para Microondas",
+      "Biomems y Dispositivos Lab on a Chip",
+      "MEMS para Radiofrecuencia",
+      "Procesadores Multinúcleo",
+      "Proyecto de Investigación de Ingeniería Eléctrica Electrónica",
+      "Sistemas Difusos",
+      "Sistemas Electrónicos",
+      "Sistemas Operativos en Tiempo Real",
+      "Temas Selectos de Electrónica",
+    ],
+  },
+} as const;
+
+type FieldKey = keyof typeof profundizacionFields;
+
 interface Subject {
   name: string;
   credits: number;
@@ -127,9 +246,7 @@ const semesters: Semester[] = [
     number: 9,
     obligatorias: 22, optativas: 24, total: 46,
     subjects: [
-      { name: "Asignatura del Campo de Profundización", credits: 8, category: "aplicada" },
-      { name: "Asignatura del Campo de Profundización", credits: 8, category: "aplicada" },
-      { name: "Asignatura del Campo de Profundización", credits: 8, category: "aplicada" },
+      { name: "Asignaturas del Campo de Profundización", credits: 24, category: "aplicada" },
       { name: "Subestaciones Eléctricas", credits: 8, category: "ingenieria" },
       { name: "Electrónica de Potencia", credits: 8, category: "ingenieria" },
       { name: "Ética Profesional", credits: 6, category: "sociales" },
@@ -142,9 +259,7 @@ const semesters: Semester[] = [
     // PDF del plan y ajusta los números de cada materia aquí abajo.
     obligatorias: 16, optativas: 18, total: 34,
     subjects: [
-      { name: "Asignatura del Campo de Profundización", credits: 6, category: "aplicada" },
-      { name: "Asignatura del Campo de Profundización", credits: 6, category: "aplicada" },
-      { name: "Asignatura del Campo de Profundización", credits: 6, category: "aplicada" },
+      { name: "Asignaturas del Campo de Profundización", credits: 18, category: "aplicada" },
       { name: "Plantas Generadoras", credits: 8, category: "ingenieria" },
       { name: "Asignatura Optativa del Campo de Profundización", credits: 8, category: "aplicada" },
       { name: "Recursos y Necesidades de México", credits: 8, category: "sociales" },
@@ -165,6 +280,7 @@ const summary = [
 
 export default function StudyPlan() {
   const [activeSemester, setActiveSemester] = useState(1);
+  const [selectedField, setSelectedField] = useState<FieldKey | null>(null);
   const current = semesters.find((s) => s.number === activeSemester)!;
 
   return (
@@ -237,6 +353,71 @@ export default function StudyPlan() {
               <span className="text-ink/60">{cat.label}</span>
             </div>
           ))}
+        </div>
+
+        {/* Campos de profundización: se eligen en 7° semestre y sus
+            materias (obligatorias y optativas) se cursan en 9° y 10°. */}
+        <div className="border-t border-ink/10 pt-8 mb-12">
+          <span className="font-mono text-xs tracking-[0.3em] text-copper uppercase mb-4 block">
+            Elección en 7° semestre
+          </span>
+          <h3 className="font-display text-2xl font-bold text-ink mb-2">
+            Campos de profundización
+          </h3>
+          <p className="text-ink/60 mb-6 max-w-2xl">
+            Desde 7° semestre eliges uno de estos 5 campos; sus materias
+            obligatorias y optativas son las que cursas en 9° y 10° semestre.
+          </p>
+
+          <div className="flex flex-wrap gap-2 mb-6">
+            {(Object.keys(profundizacionFields) as FieldKey[]).map((key) => {
+              const field = profundizacionFields[key];
+              return (
+                <button
+                  key={key}
+                  onClick={() => setSelectedField(key)}
+                  className={`px-4 py-2 rounded-full font-mono text-sm font-medium border transition-colors ${
+                    selectedField === key
+                      ? "bg-pcb-800 text-paper border-pcb-800"
+                      : "bg-white text-ink/60 border-ink/10 hover:border-copper"
+                  }`}
+                >
+                  {field.label}
+                </button>
+              );
+            })}
+          </div>
+
+          {selectedField && (
+            <div
+              className={`${profundizacionFields[selectedField].bg} border-l-4 ${profundizacionFields[selectedField].border} rounded p-6 grid grid-cols-1 md:grid-cols-2 gap-6`}
+            >
+              <div>
+                <h4
+                  className={`font-display font-bold text-sm uppercase mb-3 ${profundizacionFields[selectedField].accent}`}
+                >
+                  Obligatorias
+                </h4>
+                <ul className="space-y-1 text-sm text-ink/80">
+                  {profundizacionFields[selectedField].obligatorias.map((name) => (
+                    <li key={name}>• {name}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4
+                  className={`font-display font-bold text-sm uppercase mb-3 ${profundizacionFields[selectedField].accent}`}
+                >
+                  Optativas
+                </h4>
+                <ul className="space-y-1 text-sm text-ink/80">
+                  {profundizacionFields[selectedField].optativas.map((name) => (
+                    <li key={name}>• {name}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Tabla resumen general del plan completo */}

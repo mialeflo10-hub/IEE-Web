@@ -81,7 +81,7 @@ export default function Footer() {
               <li className="flex items-start gap-2">
                 <MapPin size={16} className="text-copper shrink-0 mt-0.5" />
                 <span className="text-paper/70">
-                  Planta baja, edificio P, cubículo P3-39 · Ciudad Universitaria
+                  Tercer Piso, edificio P, cubículo P309 · Ciudad Universitaria
                 </span>
               </li>
             </ul>
