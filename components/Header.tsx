@@ -9,9 +9,7 @@ const links = [
   { href: "/AboutCarrer", label: "La carrera" },
   { href: "/PlanDeEstudios", label: "Plan de estudios" },
   { href: "/Perfil", label: "Perfil Del Estudiante" },
-  { href: "/noticias", label: "Noticias" },
-  { href: "/eventos", label: "Eventos" },
-  { href: "/admin", label: "Administración" },
+  { href: "/noticias", label: "Noticias y eventos" },
 ];
 
 export default function Header() {

@@ -47,3 +47,13 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Oculta la barra de scroll del carrusel de eventos, pero el contenido
+   sigue siendo desplazable (con las flechas o arrastrando/swipe). */
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Edge/IE viejos */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}

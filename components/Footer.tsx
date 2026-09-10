@@ -21,8 +21,7 @@ const quickLinks = [
   { href: "/AboutCarrer", label: "La carrera" },
   { href: "/PlanDeEstudios", label: "Plan de estudios" },
   { href: "/Perfil", label: "Perfil" },
-  { href: "/noticias", label: "Noticias" },
-  { href: "/eventos", label: "Eventos" },
+  { href: "/noticias", label: "Noticias y eventos" },
 ];
 
 export default function Footer() {
