@@ -6,14 +6,16 @@ const socialLinks = [
   { href: "https://www.facebook.com/people/Coordinaci%C3%B3n-IEE/61567124520307/", icon: SiFacebook, label: "Facebook" },
   { href: "https://twitter.com/die_fi_unam", icon: SiX, label: "Twitter" }, // Twitter ahora se llama "X" en Simple Icons
   { href: "https://www.youtube.com/channel/UCN2VqvoX-WyPvjbGG_r0IZw", icon: SiYoutube, label: "YouTube" },
-  { href: "https://www.instagram.com/https://www.instagram.com/iee_coordinacion//", icon: SiInstagram, label: "Instagram" },
+  { href: "https://www.instagram.com/iee_coordinacion?stkn=MW8wZzNnajJjNzN0", icon: SiInstagram, label: "Instagram" },
 ];
 
 const sitiosInteres = [
-  { href: "http://www.anfei.mx", label: "ANFEI" },
-  { href: "http://www.alianzafiidem.org", label: "Alianza FIDEM" },
+  { href: "https://www.ingenieria.unam.mx/", label: "Facultad de Ingeniería" },
+  { href: "https://www.fi-b.unam.mx/", label: "División de Ingeniería Eléctrica Electrónica" },
+  { href: "https://odin.fi-b.unam.mx/ctyss/index.html", label: "Coordinación de Titulación y Servicio Social" },
   { href: "http://cacei.org.mx", label: "CACEI" },
   { href: "http://ingenet.com.mx", label: "INGENET" },
+  { href: "http://www.sociedadmexicanaingenieriaelectrica.org", label: "Sociedad Mexicana de Ingeniería Eléctrica" },
 ];
 
 const quickLinks = [
@@ -141,9 +143,9 @@ export default function Footer() {
       {/* Barra legal inferior, más angosta y sutil, en su propio bg
           ligeramente distinto para separarla visualmente */}
       <div className="border-t border-copper/20 bg-pcb-800/50">
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-paper/50">
+        <div className="max-w-7xl mx-auto px-10 lg:px-12 py-4 flex justify-center text-center gap-2 text-xs text-paper/50">
           <span>
-            Hecho por Michel Alejandro Flores Guevara / DIE / Facultad de Ingeniería / UNAM
+            MAFG / DIE / Facultad de Ingeniería / UNAM | Todos los derechos reservados para Coordinación Ingeniería Eléctrica Electrónica © 2026
           </span>
         </div>
       </div>

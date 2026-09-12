@@ -3,12 +3,50 @@ import Image from "next/image"; // nuevo import
 export default function Hero() {
   return (
     <section className="relative bg-pcb-950 text-paper overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
+      {/* Fondo tipo placa de circuito: pistas ortogonales con esquinas a
+          45° (como el cobre de un PCB real), vías (puntos) en las
+          uniones y una huella de chip DIP. Las dos "pistas bus" (recta
+          horizontal y vertical, de borde a borde) hacen que el patrón
+          encastre sin costuras al repetirse; el resto de las pistas
+          quedan contenidas dentro del tile para lo mismo. */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.07]">
         <svg width="100%" height="100%">
-          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#EDE7D9" strokeWidth="1" />
+          <pattern id="circuit" width="220" height="220" patternUnits="userSpaceOnUse">
+            {/* pistas bus, de borde a borde del tile */}
+            <path d="M 0 110 L 220 110" fill="none" stroke="#EDE7D9" strokeWidth="1.5" />
+            <path d="M 110 0 L 110 220" fill="none" stroke="#EDE7D9" strokeWidth="1.5" />
+
+            {/* ramales con esquinas a 45°, contenidos dentro del tile */}
+            <path d="M 60 110 L 60 76 L 84 52" fill="none" stroke="#EDE7D9" strokeWidth="1" />
+            <path d="M 150 110 L 150 142 L 176 168" fill="none" stroke="#EDE7D9" strokeWidth="1" />
+            <path d="M 110 40 L 74 40 L 50 16" fill="none" stroke="#EDE7D9" strokeWidth="1" />
+            <path d="M 110 176 L 146 176 L 170 200" fill="none" stroke="#EDE7D9" strokeWidth="1" />
+            <path d="M 30 110 L 12 110 L 12 30" fill="none" stroke="#EDE7D9" strokeWidth="1" />
+            <path d="M 190 110 L 205 110 L 205 190" fill="none" stroke="#EDE7D9" strokeWidth="1" />
+
+            {/* vías: puntos en cruces y esquinas */}
+            <circle cx="110" cy="110" r="3" fill="#EDE7D9" />
+            <circle cx="84" cy="52" r="2.5" fill="#EDE7D9" />
+            <circle cx="176" cy="168" r="2.5" fill="#EDE7D9" />
+            <circle cx="50" cy="16" r="2.5" fill="#EDE7D9" />
+            <circle cx="170" cy="200" r="2.5" fill="#EDE7D9" />
+            <circle cx="12" cy="30" r="2" fill="#EDE7D9" />
+            <circle cx="205" cy="190" r="2" fill="#EDE7D9" />
+
+            {/* huella de chip tipo DIP, con patitas a los lados */}
+            <rect x="150" y="40" width="34" height="22" fill="none" stroke="#EDE7D9" strokeWidth="1" />
+            {[46, 52, 58].map((y) => (
+              <g key={y}>
+                <path d={`M 138 ${y} L 150 ${y}`} stroke="#EDE7D9" strokeWidth="1" />
+                <path d={`M 184 ${y} L 196 ${y}`} stroke="#EDE7D9" strokeWidth="1" />
+              </g>
+            ))}
+
+            {/* pads sueltos, tipo SMD */}
+            <rect x="26" y="160" width="6" height="6" fill="#EDE7D9" />
+            <rect x="196" y="70" width="6" height="6" fill="#EDE7D9" />
           </pattern>
-          <rect width="100%" height="100%" fill="url(#grid)" />
+          <rect width="100%" height="100%" fill="url(#circuit)" />
         </svg>
       </div>
 

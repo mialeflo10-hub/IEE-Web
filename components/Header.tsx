@@ -9,6 +9,8 @@ const links = [
   { href: "/AboutCarrer", label: "La carrera" },
   { href: "/PlanDeEstudios", label: "Plan de estudios" },
   { href: "/Perfil", label: "Perfil Del Estudiante" },
+  { href: "/Perfil/Objetivos", label: "Objetivos Educacionales" },
+  { href: "/Perfil/Atributos", label: "Atributos de Egreso" },
   { href: "/noticias", label: "Noticias y eventos" },
 ];
 
@@ -57,9 +59,15 @@ export default function Header() {
         </Link>
 
         <div className="flex items-center gap-4">
-          <Image src="/Logo/UNAM.png" alt="UNAM" width={62} height={62} className="opacity-90" />
-          <Image src="/Logo/FI.png" alt="Facultad de Ingeniería" width={52} height={52} className="opacity-90" />
-          <Image src="/Logo/DIE.png" alt="DIE" width={88} height={88} className="opacity-90" />
+          <a href="https://www.unam.mx/" target="_blank" rel="noopener noreferrer">
+            <Image src="/Logo/UNAM.png" alt="UNAM" width={62} height={62} className="opacity-90" />
+          </a>
+          <a href="https://www.ingenieria.unam.mx/" target="_blank" rel="noopener noreferrer">
+            <Image src="/Logo/FI.png" alt="Facultad de Ingeniería" width={52} height={52} className="opacity-90" />
+          </a>
+          <a href="https://www.fi-b.unam.mx/" target="_blank" rel="noopener noreferrer">
+            <Image src="/Logo/DIE.png" alt="DIE" width={88} height={88} className="opacity-90" />
+          </a>
           <Image src="/Logo/IEEFullWhite.png" alt="IEE" width={52} height={52} className="opacity-90" />
         </div>
       </div>

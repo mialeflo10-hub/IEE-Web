@@ -2,6 +2,8 @@
 "use client"; // usamos useState para las pestañas de plan/semestre
 
 import { useState } from "react";
+import Image from "next/image";
+import { getProgramHref } from "./programas";
 
 type PlanKey = "2026" | "2023";
 
@@ -337,11 +339,29 @@ function Plan2026() {
 
   return (
     <div>
-      <p className="text-ink/60 mb-10 max-w-2xl">
+      <p className="text-ink/60 mb-6 max-w-2xl">
         10 semestres, 394 créditos totales (348 obligatorios + 46 optativos
         mínimos). Plan propuesto, mayo 2026. Explora las materias de cada
         semestre.
       </p>
+
+      <a
+        href="/PlanDeEstudios/mapa-2026.png"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block mb-10 max-w-sm border border-ink/10 rounded-lg overflow-hidden hover:border-copper transition-colors"
+      >
+        <Image
+          src="/PlanDeEstudios/mapa-2026.png"
+          alt="Mapa curricular oficial del Plan 2026"
+          width={2550}
+          height={3300}
+          className="w-full h-auto"
+        />
+        <span className="block text-center font-mono text-xs text-ink/60 py-2 border-t border-ink/10">
+          Ver mapa curricular oficial completo ↗
+        </span>
+      </a>
 
       <div className="flex flex-wrap gap-2 mb-8">
         {semesters2026.map((s) => (
@@ -368,17 +388,33 @@ function Plan2026() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
         {current.subjects.map((subject, i) => {
           const cat = categories2026[subject.category];
-          return (
-            <div
-              key={i}
-              className={`${cat.bg} border-l-4 ${cat.border} rounded p-4`}
-            >
+          const href = getProgramHref(subject.name);
+          const className = `${cat.bg} border-l-4 ${cat.border} rounded p-4 block${
+            href ? " hover:brightness-95 transition cursor-pointer" : ""
+          }`;
+          const content = (
+            <>
               <h3 className="font-display font-bold text-ink text-sm mb-1">
                 {subject.name}
               </h3>
               <span className="font-mono text-xs text-ink/60">
                 {subject.credits} créditos
               </span>
+            </>
+          );
+          return href ? (
+            <a
+              key={i}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={className}
+            >
+              {content}
+            </a>
+          ) : (
+            <div key={i} className={className}>
+              {content}
             </div>
           );
         })}
@@ -429,14 +465,28 @@ function Plan2026() {
         {selectedField && (
           <div className="bg-gray-50 border-l-4 border-gray-500 rounded p-6">
             <ul className="space-y-2 text-sm text-ink/80">
-              {temasSelectosFields2026[selectedField].courses.map((course) => (
-                <li key={course.name} className="flex justify-between gap-4">
-                  <span>• {course.name}</span>
-                  <span className="font-mono text-xs text-ink/50 shrink-0">
-                    {course.credits} cr. · sem. {course.semesters}
-                  </span>
-                </li>
-              ))}
+              {temasSelectosFields2026[selectedField].courses.map((course) => {
+                const href = getProgramHref(course.name);
+                return (
+                  <li key={course.name} className="flex justify-between gap-4">
+                    {href ? (
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-copper hover:underline"
+                      >
+                        • {course.name}
+                      </a>
+                    ) : (
+                      <span>• {course.name}</span>
+                    )}
+                    <span className="font-mono text-xs text-ink/50 shrink-0">
+                      {course.credits} cr. · sem. {course.semesters}
+                    </span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         )}
@@ -740,10 +790,28 @@ function Plan2023() {
 
   return (
     <div>
-      <p className="text-ink/60 mb-10 max-w-2xl">
+      <p className="text-ink/60 mb-6 max-w-2xl">
         10 semestres, 442 créditos totales. Explora las materias de cada
         semestre.
       </p>
+
+      <a
+        href="/Logo/electrica_2023.png"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block mb-10 max-w-sm border border-ink/10 rounded-lg overflow-hidden hover:border-copper transition-colors"
+      >
+        <Image
+          src="/Logo/electrica_2023.png"
+          alt="Mapa curricular oficial del Plan 2023"
+          width={800}
+          height={1067}
+          className="w-full h-auto"
+        />
+        <span className="block text-center font-mono text-xs text-ink/60 py-2 border-t border-ink/10">
+          Ver mapa curricular oficial completo ↗
+        </span>
+      </a>
 
       {/* Pestañas de semestre: un botón del 1 al 10. El semestre activo
           se resalta con bg-pcb-800; el resto queda neutro. Al hacer

@@ -128,11 +128,11 @@ const perfilProfesionalAreas = [
 ];
 
 const tabs = [
-  { key: "objetivos", label: "Objetivos educacionales" },
-  { key: "atributos", label: "Atributos del egresado" },
   { key: "ingreso", label: "Perfil de ingreso" },
   { key: "egreso", label: "Perfil de egreso" },
   { key: "profesional", label: "Perfil profesional" },
+  { key: "objetivos", label: "Objetivos educacionales" },
+  { key: "atributos", label: "Atributos del egresado" },
 ] as const;
 
 type TabKey = (typeof tabs)[number]["key"];
